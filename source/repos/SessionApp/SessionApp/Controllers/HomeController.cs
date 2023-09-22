@@ -9,10 +9,22 @@ namespace SessionApp.Controllers
     {
         public IActionResult Index()
         {
-            // Oturumu etkinleştir
-            HttpContext.Session.SetString("StudentName", "John");
-            HttpContext.Session.SetInt32("StudentId", 50);
 
+
+
+            return View();
+        }
+        [HttpPost]
+
+        public IActionResult Index(LoginModel loginModel)
+        {
+            if (loginModel.Email == "John@John.com" && loginModel.Password == "123")
+            {
+                HttpContext.Session.SetString("StudentName", "John");
+                HttpContext.Session.SetInt32("StudentId", 50);
+
+                return View();
+            }
             return View();
         }
 
